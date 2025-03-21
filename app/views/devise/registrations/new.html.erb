@@ -1,29 +1,31 @@
 <div class="contents row">
   <div class="container">
-    <h2>Sign up</h2>
+    <h2>新規登録</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'shared/error_messages', model: f.object %>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <label>ニックネーム</label>
+        <%= f.text_field :nickname,  autofocus: true %>
+      </div>
+
+      <div class="field">
+        <label>メールアドレス</label>
         <%= f.email_field :email %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <label>パスワード</label>
+        <%= f.password_field :password, placeholder:"最低6文字必要です", autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <label>もう一度パスワードを入力してください</label>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "新規登録" %>
       </div>
     <% end %>
   </div>
