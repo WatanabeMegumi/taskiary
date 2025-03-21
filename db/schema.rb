@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_21_080207) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_21_083438) do
   create_table "main_tasks", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.integer "target_time", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_080207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_main_tasks_on_user_id"
+  end
+
+  create_table "sub_tasks", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "target_time", null: false
+    t.integer "actual_time"
+    t.integer "order", null: false
+    t.bigint "main_task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["main_task_id"], name: "index_sub_tasks_on_main_task_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
@@ -35,4 +46,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_080207) do
   end
 
   add_foreign_key "main_tasks", "users"
+  add_foreign_key "sub_tasks", "main_tasks"
 end

@@ -1,0 +1,41 @@
+<%= form_with model: @main_task, local: true do |f| %>
+  <div>
+    <%= f.label :name, "タスク名" %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <h3>サブタスク</h3>
+  <div id="subtasks">
+    <%= f.fields_for :sub_tasks do |sub_f| %>
+      <div>
+        <%= sub_f.label :name, "サブタスク名" %>
+        <%= sub_f.text_field :name %>
+        <%= sub_f.hidden_field :order, value: 1 %>
+      </div>
+    <% end %>
+  </div>
+  <button type="button" id="add-subtask">サブタスクを追加</button>
+  
+  <%= f.submit "作成" %>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let subtaskContainer = document.getElementById("subtasks");
+    let addSubtaskButton = document.getElementById("add-subtask");
+    let subtaskIndex = 1;
+
+    addSubtaskButton.addEventListener("click", function () {
+      if (subtaskIndex < 10) {
+        let newSubtask = document.createElement("div");
+        newSubtask.innerHTML = `
+          <label>サブタスク名</label>
+          <input type="text" name="main_task[sub_tasks_attributes][${subtaskIndex}][name]">
+          <input type="hidden" name="main_task[sub_tasks_attributes][${subtaskIndex}][order]" value="${subtaskIndex + 1}">
+        `;
+        subtaskContainer.appendChild(newSubtask);
+        subtaskIndex++;
+      }
+    });
+  });
+</script>
