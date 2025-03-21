@@ -1,5 +1,6 @@
 class MainTask < ApplicationRecord
   belongs_to :user
+  has_many :sub_tasks
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :target_time, presence: true, numericality: { only_integer: true, greater_than: 0 }
