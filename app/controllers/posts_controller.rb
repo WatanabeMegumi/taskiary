@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
@@ -80,6 +80,15 @@ class PostsController < ApplicationController
       redirect_to post_path(@post), notice: "更新が完了しました"
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if current_user == @post.user
+      @post.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
     end
   end
 
