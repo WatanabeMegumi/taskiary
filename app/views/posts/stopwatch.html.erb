@@ -1,0 +1,30 @@
+<div class="stopwatch-container">
+  <h2 class="stopwatch-heading">計測中のタスク</h2>
+
+  <div class="task-info">
+    <table class="task-info-table">
+    <tr>
+      <td class="label">タスク名</td>
+      <td><%= @task["task_name"] %></td>
+    </tr>
+    <tr>
+      <td class="label">目標時間</td>
+      <td><%= @task["target_time"] %> 分</td>
+    </tr>
+    </table>
+  </div>
+
+
+  <h3 id="timer" class="timer-display">00:00:00</h3>
+
+  <div class="button-group">
+    <button id="start-btn" class="timer-button">スタート</button>
+    <button id="pause-btn" class="timer-button" style="display:none;">一時停止</button>
+    <button id="resume-btn" class="timer-button" style="display:none;">再開</button>
+    <form id="stop-form" action="<%= save_time_posts_path %>" method="post" style="display:none;">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :actual_time, "", id: "actual_time_field" %>
+      <button type="submit" class="timer-button">終了</button>
+    </form>
+  </div>
+</div>

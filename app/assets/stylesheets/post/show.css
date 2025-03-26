@@ -1,0 +1,145 @@
+/* 全体コンテナを中央に配置 */
+.post-show-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+/* 投稿カード */
+.post-show-card {
+  width: 60%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  position: relative;
+}
+
+/* ヘッダー（タイトル + 編集メニュー） */
+.post-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-show-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.post-show-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-left: 10px;
+}
+
+/* 投稿者表示 */
+.post-show-user {
+  font-size: 13px;
+  color: #777;
+}
+
+/* 編集・削除メニュー */
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+.menu-wrapper:hover .menu-items {
+  display: flex;
+}
+
+.menu-items {
+  display: none;
+  flex-direction: column; /* 縦並びにする */
+  gap: 6px;
+  position: absolute;
+  right: 0;
+  top: 24px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #333;
+  background-color: #eaeaea;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;     /* ←これが改行防止の主役！ */
+  min-width: 60px;         /* ←細すぎるボタンにならないよう幅確保 */
+}
+
+.menu-button:hover {
+  background-color: #ddd;
+}
+
+/* 情報テーブル（タスク名・目標時間・実測時間） */
+.post-show-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-show-table th,
+.post-show-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.post-show-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  width: 30%;
+}
+
+.post-show-table tr:last-child th,
+.post-show-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 本文表示（優しく囲う） */
+.post-show-text {
+  background-color: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* 投稿日時（右下） */
+.post-show-footer {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.post-show-date {
+  font-size: 12px;
+  color: #aaa;
+}

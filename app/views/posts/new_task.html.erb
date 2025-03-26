@@ -1,0 +1,29 @@
+<div class="new-task-container">
+  <%= form_with url: save_task_posts_path, method: :post, local: true, html: { class: "new-task-form" } do %>
+  <p class="description-text">
+    タスク名と目標時間を入力してください。<br>
+    「計測を始める」を押すとすぐに計測画面に移動します。
+  </p>
+    <% if flash[:alert] %>
+      <p class="alert-message"><%= flash[:alert] %></p>
+    <% end %>
+
+    <div class="form-group">
+      <label for="task_name" class="form-label">タスク名</label><br>
+      <%= text_field_tag :task_name, @task.task_name, class: "form-input task-name-input" %>
+    </div>
+
+    <div class="form-group target-time-group">
+  <label for="target_time" class="form-label">目標時間（分）</label><br>
+  <div class="input-with-unit">
+    <%= number_field_tag :target_time, @task.target_time, min: 1, placeholder: "半角数字", class: "form-input target-time-input" %>
+    <span class="unit-label">分</span>
+  </div>
+</div>
+
+
+    <div class="form-actions">
+      <%= submit_tag "計測を始める", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
