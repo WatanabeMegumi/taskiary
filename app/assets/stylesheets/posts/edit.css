@@ -1,0 +1,123 @@
+/* Edit container styling */
+.edit-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Form group styling */
+.edit-form-group {
+  margin-bottom: 20px;
+}
+
+.edit-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.edit-form-group input,
+.edit-form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Styling for required field labels */
+.required {
+  color: red;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Styling for optional field labels */
+.optional {
+  color: #aaa;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Table styling for time information */
+.time-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.time-table th,
+.time-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.time-table th {
+  background-color: #f5f5f5;
+  width: 50%;
+}
+
+.time-table td {
+  background-color: #fff;
+}
+
+/* Button container for 'update' and 'back' */
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* Align items vertically at the center */
+  margin-top: 30px;
+  height: 50px;  /* Ensures the container height is consistent */
+}
+
+/* Update button */
+.edit-buttons .btn-update {
+  background-color: #00b3a6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 48%;
+  height: 100%; /* Ensure the button height fills the container */
+}
+
+.edit-buttons .btn-update:hover {
+  background-color: #00998e;
+}
+
+/* Back button */
+.edit-buttons .btn-back {
+  background-color: #ccc;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: 0;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  width: 48%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.edit-buttons .btn-back:hover {
+  background-color: #bbb;
+}

@@ -1,0 +1,43 @@
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="edit-container">
+    <h2>投稿を編集</h2>
+
+    <div class="edit-form-group">
+      <%= f.label :title, "タイトル" %>
+      <span class="required">必須</span>
+      <%= f.text_field :title, class: 'form-input' %>
+    </div>
+
+    <div class="edit-form-group">
+      <%= f.label :task_name, "タスク名" %>
+      <span class="required">必須</span>
+      <%= f.text_field :task_name, class: 'form-input' %>
+    </div>
+
+    <div class="edit-form-group">
+      <%= f.label :text, "本文" %>
+      <span class="optional">（任意）</span>
+      <%= f.text_area :text, class: 'form-input' %>
+    </div>
+
+    <!-- Display target time and actual time in a table format -->
+    <div class="edit-form-group">
+      <table class="time-table">
+        <tr>
+          <th>目標時間</th>
+          <td><%= @post.target_time %> 分</td>
+        </tr>
+        <tr>
+          <th>実測時間</th>
+          <td><%= (@post.actual_time.actual_time / 60).floor %> 分</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Buttons for submit and return -->
+    <div class="edit-buttons">
+      <%= link_to "戻る", post_path(@post), class: "btn-back" %>
+      <%= f.submit "更新する", class: "btn-update" %>
+    </div>
+  </div>
+<% end %>
