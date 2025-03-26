@@ -143,3 +143,15 @@
   font-size: 12px;
   color: #aaa;
 }
+
+/* 削除ボタン専用スタイル */
+.delete-button {
+  background-color: #ffecec;
+  color: #d33;
+  border: 1px solid #f5c2c7;
+}
+
+.delete-button:hover {
+  background-color: #f8d7da;
+  color: #b02a37;
+}

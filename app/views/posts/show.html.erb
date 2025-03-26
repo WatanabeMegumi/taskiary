@@ -14,7 +14,7 @@
             <div class="menu-toggle">&#x22EE;</div>
             <div class="menu-items vertical">
               <%= link_to "編集", edit_post_path(@post), class: "menu-button" %>
-              <%= link_to "削除", "#", class: "menu-button", data: { delete_url: post_path(@post) }, id: "delete-link" %>
+              <%= link_to "削除", "#", class: "menu-button delete-button", data: { delete_url: post_path(@post) }, id: "delete-link" %>
             </div>
           </div>
         <% end %>
