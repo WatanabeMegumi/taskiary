@@ -1,0 +1,50 @@
+<div class="post-new-container">
+  <h2 class="post-new-heading">記録の投稿</h2>
+
+  <div class="post-summary">
+    <table class="post-summary-table">
+      <thead>
+        <tr>
+          <th>タスク名</th>
+          <th>目標時間（分）</th>
+          <th>実測時間（分）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @task["task_name"] %></td>
+          <td><%= @task["target_time"] %> 分</td>
+          <td><%= (@actual_time.to_i / 60).floor %> 分</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <%= form_with model: @post, local: true, html: { class: "post-new-form" } do |f| %>
+    <% if @post.errors.any? %>
+      <ul class="form-errors">
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, class: "form-label" do %>
+        タイトル <span class="required">必須</span>
+      <% end %>
+      <%= f.text_field :title, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :text, class: "form-label" do %>
+        本文 <span class="optional">（任意）</span>
+      <% end %>
+      <%= f.text_area :text, class: "form-textarea" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "投稿する", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="post-show-container">
+  <div class="post-show-card">
+    <div class="post-show-header">
+      <h2 class="post-show-title"><%= @post.title %></h2>
+      <div class="post-show-controls">
+        <% if current_user == @post.user %>
+          <div class="menu-wrapper">
+            <div class="menu-toggle">&#x22EE;</div>
+            <div class="menu-items vertical">
+              <%= link_to "編集", "#", class: "menu-button" %>
+              <%= link_to "削除", "#", class: "menu-button" %>
+            </div>
+          </div>
+        <% end %>
+        <span class="post-show-user">by <%= link_to @post.user.nickname, "#" %></span>
+      </div>
+    </div>
+
+    <table class="post-show-table">
+      <tr>
+        <th>タスク名</th>
+        <td><%= @post.task_name %></td>
+      </tr>
+      <tr>
+        <th>目標時間</th>
+        <td><%= @post.target_time %> 分</td>
+      </tr>
+      <tr>
+        <th>実測時間</th>
+        <td><%= (@post.actual_time.actual_time / 60).floor %> 分</td>
+      </tr>
+    </table>
+
+    <div class="post-show-text">
+      <p><%= @post.text %></p>
+    </div>
+
+    <div class="post-show-footer">
+      <span class="post-show-date">投稿日：<%= l(@post.created_at, format: :short) %></span>
+    </div>
+  </div>
+</div>

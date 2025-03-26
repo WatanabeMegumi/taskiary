@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MainTaskTest < ActiveSupport::TestCase
+class ActualTimeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

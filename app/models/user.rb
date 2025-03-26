@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  has_many :main_tasks
+  has_many :posts
 end
