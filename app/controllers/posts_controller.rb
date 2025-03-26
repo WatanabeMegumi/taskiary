@@ -71,11 +71,16 @@ class PostsController < ApplicationController
   end
 
   def edit
+    return if current_user == @post.user && @post.present?
+    redirect_to root_path
   end
 
   def update
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "更新が完了しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

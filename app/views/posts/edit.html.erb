@@ -1,0 +1,36 @@
+<h2 class="edit-page-title">投稿の編集</h2>
+
+<div class="edit-form-wrapper">
+  <%= form_with(model: @post, local: true) do |f| %>
+    <% if @post.errors.any? %>
+      <ul class="form-errors">
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <span class="required">必須</span><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :task_name, "タスク名" %>
+      <span class="required">必須</span><br>
+      <%= f.text_field :task_name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :text, "本文" %>
+      <span class="optional">（任意）</span><br>
+      <%= f.text_area :text %>
+    </div>
+
+    <div class="form-actions">
+      <%= link_to "戻る", post_path(@post), class: "btn-secondary" %>
+      <%= f.submit "更新する", class: "btn-primary" %>
+    </div>
+  <% end %>
+</div>
