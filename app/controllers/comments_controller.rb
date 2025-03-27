@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.includes(:user).order(created_at: :asc)
 
     if @comment.save
       redirect_to post_path(@comment.post.id)
