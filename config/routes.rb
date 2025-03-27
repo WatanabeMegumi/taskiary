@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get  :stopwatch
       post :save_time
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   resources :users, only: [:show]
 end

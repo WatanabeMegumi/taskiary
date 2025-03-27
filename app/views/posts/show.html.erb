@@ -78,10 +78,18 @@
       <div class="comment-card">
         <p class="comment-meta">
           <%= link_to comment.user.nickname, user_path(comment.user), class: "comment-author" %>
-          <span class="comment-date"><%= l(comment.created_at, format: :short) %></span>
+          <% if current_user == comment.user %>
+            <%= link_to "削除", post_comment_path(@post, comment), data: { turbo_method: :delete, turbo_confirm: "削除してもよろしいですか？" }, class: "comment-delete-button" %>
+          <% end %>
         </p>
-        <p class="comment-text"><%= simple_format(h(comment.text)) %></p>
+
+        <p class="comment-text"><%= comment.text %></p>
+
+        <p class="comment-date">
+          <%= l(comment.created_at, format: :short) %>
+        </p>
       </div>
+
     <% end %>
   </div>
 </div>
