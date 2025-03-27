@@ -62,7 +62,7 @@
 
 .menu-items {
   display: none;
-  flex-direction: column; /* 縦並びにする */
+  flex-direction: column;
   gap: 6px;
   position: absolute;
   right: 0;
@@ -85,8 +85,8 @@
   border-radius: 6px;
   text-decoration: none;
   text-align: center;
-  white-space: nowrap;     /* ←これが改行防止の主役！ */
-  min-width: 60px;         /* ←細すぎるボタンにならないよう幅確保 */
+  white-space: nowrap;
+  min-width: 60px;
 }
 
 .menu-button:hover {
@@ -194,7 +194,7 @@
 
 .comment-submit-button {
   display: block;
-  margin: 4px auto 0;  /* 上の余白をギリギリに調整 */
+  margin: 4px auto 0;
   background-color: #00b3a6;
   color: #fff;
   border: none;
@@ -222,11 +222,13 @@
 
 /* 各コメントカード */
 .comment-card {
-  background-color: #fff;
-  border: 1px solid #eee;
+  position: relative; /* ↓日付の位置指定のために必要 */
+  max-width: 600px;
+  background-color: #f9f9f9;
+  padding: 14px 18px;
   border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* コメントメタ情報（名前と日付） */
@@ -239,8 +241,11 @@
 }
 
 .comment-date {
-  color: #aaa;
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
   font-size: 12px;
+  color: #999;
 }
 
 
@@ -267,4 +272,24 @@
   margin-bottom: 15px;
   font-weight: bold;
   text-align: center;
+}
+
+/* コメント削除ボタン */
+.comment-delete-button {
+  background-color: #f08080;
+  color: white !important;
+  border: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+/* ホバー時も白文字のままに */
+.comment-delete-button:hover {
+  background-color: #e06666;
+  color: white !important;
 }
