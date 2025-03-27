@@ -1,1 +1,14 @@
-マイページ
+<div class="user-header">
+  <h2 class="user-nickname">
+    <%= @nickname %>
+    <% if current_user == @user %>
+      <%= link_to "✏", edit_user_registration_path, class: "edit-profile-icon" %>
+    <% end %>
+  </h2>
+
+  <% if @user.profile.present? %>
+    <p class="user-profile"><%= @user.profile %></p>
+  <% else %>
+    <p class="user-profile empty">( 自己紹介はまだありません )</p>
+  <% end %>
+</div>

@@ -7,3 +7,5 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "stopwatch", to: "stopwatch.js" 
 pin "delete_confirm", to: "delete_confirm.js"
+pin "chart.js" # @4.4.8
+pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4
