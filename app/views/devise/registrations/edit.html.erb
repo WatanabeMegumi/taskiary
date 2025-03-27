@@ -10,6 +10,7 @@
   <% end %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
 
     <h3 class="section-heading">基本情報</h3>
 

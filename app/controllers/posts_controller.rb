@@ -61,7 +61,7 @@ class PostsController < ApplicationController
       @post.create_actual_time(actual_time: @actual_time)
       session.delete(:task)
       session.delete(:actual_time)
-      redirect_to root_path, notice: "投稿が完了しました"
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
