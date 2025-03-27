@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_update_path_for(resource)
+    user_path(resource) # ユーザー詳細ページにリダイレクト
+  end
 
   private
 
