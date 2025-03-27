@@ -1,6 +1,5 @@
 document.addEventListener("turbo:load", () => {
   const timer = document.getElementById("timer");
-  if (!someElement) return;
   const startBtn = document.getElementById("start-btn");
   const pauseBtn = document.getElementById("pause-btn");
   const resumeBtn = document.getElementById("resume-btn");
