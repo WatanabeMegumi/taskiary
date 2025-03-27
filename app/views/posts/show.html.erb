@@ -18,7 +18,7 @@
             </div>
           </div>
         <% end %>
-        <span class="post-show-user">by <%= link_to @post.user.nickname, "#" %></span>
+        <span class="post-show-user">by <%= link_to @post.user.nickname, user_path(@post.user) %></span>
       </div>
     </div>
 
