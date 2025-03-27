@@ -17,18 +17,53 @@ document.addEventListener("turbo:load", () => {
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: formattedLabels,
+      labels: formattedLabels, // ← 修正ポイント
       datasets: [{
         label: "日別実測時間（分）",
         data: data,
-        backgroundColor: "#00b3a6"
+        backgroundColor: "rgba(0, 179, 166, 0.7)",
+        borderRadius: 6,
+        barThickness: 30
       }]
     },
     options: {
+      plugins: {
+        legend: {
+          display: true,
+          position: "top",
+          labels: {
+            color: "#555",
+            font: {
+              size: 12,
+              weight: 'bold'
+            }
+          }
+        }
+      },
       scales: {
+        x: {
+          ticks: {
+            color: "#555",
+            font: {
+              size: 12
+            }
+          },
+          grid: {
+            display: false
+          }
+        },
         y: {
           beginAtZero: true,
-          ticks: { stepSize: 10 }
+          ticks: {
+            stepSize: 10,
+            color: "#555",
+            font: {
+              size: 12
+            }
+          },
+          grid: {
+            color: "#eee"
+          }
         }
       }
     }
