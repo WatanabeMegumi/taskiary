@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   has_one :actual_time, dependent: :destroy
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :task_name, presence: true

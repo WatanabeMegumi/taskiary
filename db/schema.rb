@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_27_093216) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_27_172147) do
   create_table "actual_times", charset: "utf8mb3", force: :cascade do |t|
     t.integer "actual_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "post_id", null: false
     t.index ["post_id"], name: "index_actual_times_on_post_id"
+  end
+
+  create_table "comments", charset: "utf8mb3", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "posts", charset: "utf8mb3", force: :cascade do |t|
@@ -45,5 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_27_093216) do
   end
 
   add_foreign_key "actual_times", "posts"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
 end

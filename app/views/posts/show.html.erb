@@ -46,3 +46,42 @@
     </div>
   </div>
 </div>
+
+<div class="comment-section">
+  <h3 class="comment-title">コメント</h3>
+
+  <!-- コメント投稿フォーム（ログインユーザーのみ表示） -->
+  <% if flash[:alert] %>
+    <div class="flash-alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div class="comment-form">
+      <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :text, placeholder: "コメントする", rows: 3, class: "comment-textarea" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "送信", class: "comment-submit-button" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="login-prompt">コメントするにはログインしてください。</p>
+  <% end %>
+
+  <!-- コメント一覧（古い順に並べる） -->
+  <div class="comment-list">
+    <% @comments.each do |comment| %>
+      <div class="comment-card">
+        <p class="comment-meta">
+          <%= link_to comment.user.nickname, user_path(comment.user), class: "comment-author" %>
+          <span class="comment-date"><%= l(comment.created_at, format: :short) %></span>
+        </p>
+        <p class="comment-text"><%= simple_format(h(comment.text)) %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
