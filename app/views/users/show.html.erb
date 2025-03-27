@@ -1,0 +1,100 @@
+<div class="user-page-container">
+  <div class="user-header">
+    <div class="user-header-top">
+      <h2 class="user-nickname"><%= @nickname %></h2>
+      <% if current_user == @user %>
+        <%= link_to "プロフィールを編集", edit_user_registration_path, class: "edit-profile-button" %>
+      <% end %>
+    </div>
+
+    <% if @profile.present? %>
+      <p class="user-profile"><%= @profile %></p>
+    <% else %>
+      <p class="user-profile empty">( 自己紹介はまだありません )</p>
+    <% end %>
+  </div>
+
+  
+  <div class="user-stats">
+    <div class="stat-item">
+      <div class="stat-text">
+        <p class="stat-label">累計タスク実測時間</p>
+        <p class="stat-value"><%= @total_minutes %> 分</p>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-text">
+        <p class="stat-label">今週の合計</p>
+        <p class="stat-value"><%= @weekly_total_minutes %> 分</p>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-text">
+        <p class="stat-label">投稿数</p>
+        <p class="stat-value"><%= @posts.count %> 件</p>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div class="user-graph">
+    <p class="graph-legend">1週間分の実測時間（1日あたりの合計）</p>
+
+    <div class="week-navigation">
+      <button id="prev-week" class="week-arrow">◀</button>
+      <span id="week-range" class="week-range"><%= @week_range %></span>
+      <button id="next-week" class="week-arrow">▶</button>
+    </div>
+
+    <canvas id="weekly-task-chart" width="400" height="200"></canvas>
+  </div>
+
+  
+  <script type="application/json" id="weekly-task-data">
+    {
+      "labels": <%= raw @weekly_labels.to_json %>,
+      "data": <%= raw @weekly_minutes.to_json %>
+    }
+  </script>
+  
+  <hr>
+  
+  <div class="user-posts">
+    <h3 class="post-section-title">投稿一覧</h3>
+    <% if @posts.any? %>
+    <div class="posts-container">
+      <% @posts.each do |post| %>
+        <div class="post-card">
+          <div class="post-header">
+            <h3 class="post-title"><%= link_to post.title, post_path(post) %></h3>
+          </div>
+  
+          <table class="post-info-table">
+            <tr>
+              <th>タスク名</th>
+              <td><%= post.task_name %></td>
+            </tr>
+            <tr>
+              <th>実測時間</th>
+              <td><%= (post.actual_time.actual_time / 60).floor %> 分</td>
+            </tr>
+          </table>
+  
+          <div class="post-text">
+            <%= simple_format(truncate(post.text, length: 100)) %>
+          </div>
+  
+          <div class="post-footer">
+            <span class="post-date">投稿日：<%= l(post.created_at, format: :short) %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+    <p class="no-posts">まだ投稿がありません。</p>
+  <% end %>
+  </div>
+</div>

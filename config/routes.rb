@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   root to: "posts#index"
   resources :posts do
     collection do
@@ -9,4 +11,5 @@ Rails.application.routes.draw do
       post :save_time
     end
   end
+  resources :users, only: [:show]
 end

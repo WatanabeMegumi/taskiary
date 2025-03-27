@@ -3,3 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "stopwatch"
 import "delete_confirm"
+import "chart.js";
+import "user_chart"; // ← グローバルに Chart が定義されるので import Chart は不要！
+

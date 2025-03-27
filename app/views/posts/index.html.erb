@@ -6,7 +6,7 @@
       <div class="post-card">
         <div class="post-header">
           <h3 class="post-title"><%= link_to post.title, post_path(post) %></h3>
-          <span class="post-user">by <%= link_to post.user.nickname, "" %></span>
+          <span class="post-user">by <%= link_to post.user.nickname, user_path(post.user) %></span>
         </div>
 
         <table class="post-info-table">
