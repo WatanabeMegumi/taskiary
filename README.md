@@ -8,8 +8,8 @@ Taskiary（タスキアリー）
 https://taskiary.onrender.com
 
 ## テスト用アカウント
-テスト用Email：
-テスト用Password：
+テスト用Email：aaa@aaa.com
+テスト用Password：aaa123
 
 ## 利用方法
 ### タスクを登録する
