@@ -2,10 +2,7 @@
   <div class="container">
     <h2>ログイン</h2>
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <div class='login-flash-message'>
-        <%= flash[:notice] %>
-        <%= flash[:alert] %>
-      </div>
+      <%= render 'shared/error_messages', model: f.object %>
 
       <div class="field">
         <label>メールアドレス</label>

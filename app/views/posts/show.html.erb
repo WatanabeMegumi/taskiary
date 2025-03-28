@@ -60,6 +60,7 @@
   <% if user_signed_in? %>
     <div class="comment-form">
       <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
         <div class="form-group">
           <%= f.text_area :text, placeholder: "コメントする", rows: 3, class: "comment-textarea" %>
         </div>

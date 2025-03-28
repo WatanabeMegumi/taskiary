@@ -21,13 +21,7 @@
   </div>
 
   <%= form_with model: @post, local: true, html: { class: "post-new-form" } do |f| %>
-    <% if @post.errors.any? %>
-      <ul class="form-errors">
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <div class="form-group">
       <%= f.label :title, class: "form-label" do %>

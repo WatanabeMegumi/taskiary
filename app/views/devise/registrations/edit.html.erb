@@ -5,12 +5,8 @@
     アカウント情報を変更するには、<strong>現在のパスワード</strong>の入力が必要です。
   </p>
 
-  <% if flash[:notice] %>
-    <div class="flash-message"><%= flash[:notice] %></div>
-  <% end %>
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <h3 class="section-heading">基本情報</h3>
 
